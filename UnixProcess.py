@@ -34,7 +34,7 @@ def plot_unix(n, r, path_rel, path_abs, file_name, nr):
 	plt.ylabel("sensitivity")
 	if not os.path.isdir("img2"):
 		os.mkdir("img2")
-	plt.savefig(f"img2\\Unix_curves_{file_name[:-7]}.png")
+	plt.savefig(f"img2\\Unix_curves_r_{r}_{file_name[:-7]}.png")
 	print("Done")
 
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 	cd = 'cd C:\\Users\\sboos\\"Google Drive"\\UNI\\"Natural Computing"\\A2\\negative-selection'
 	prefix = "syscalls\\"
 
-	nr = 2  # to switch which file to use for testing, change the nr variable
+	nr = 1  # to switch which file to use for testing, change the nr variable
 	folder1 = 'snd-cert'
 	folder2 = 'snd-unm'
 
@@ -56,8 +56,9 @@ if __name__ == '__main__':
 	path = f"C:\\Users\\sboos\\Google Drive\\UNI\\Natural Computing\\A2\\negative-selection\\{folder_path}"
 	path2 = f"C:\\Users\\sboos\\Google Drive\\UNI\\Natural Computing\\A2\\negative-selection\\{folder_path2}"
 	n = 7
-	r = 6
+	r = 7
 
-	plot_unix(n, r, folder_path, path, file_name, nr=nr)  # cert folder
-	plot_unix(n, r, folder_path2, path2, file_name2, nr=nr)  # unm folder
+	for r_ in range(1, r+1):
+		plot_unix(n, r_, folder_path, path, file_name, nr=nr)  # cert folder
+		plot_unix(n, r_, folder_path2, path2, file_name2, nr=nr)  # unm folder
 
